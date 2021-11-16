@@ -30,8 +30,8 @@ function CargarSocios(){
                 '<td>'+ MiItems[i].ESTADO        + '</td>'+
                 '<td>'+ MiItems[i].TELEFONO      + '</td>'+
                 '<td>'+
-                '<button class="btn btn-warning" onclick="CargarSocio('+ MiItems[i].id +')">Editar</button>' +
-                '<button class="btn btn-outline-danger" onclick="EliminarSocio('+ MiItems[i].id +')">Eliminar</button>'+
+                '<button class="btn btn-warning" onclick="CargarSocio('+ MiItems[i].ID +')">Editar</button>' +
+                '<button class="btn btn-outline-danger" onclick="EliminarSocio('+ MiItems[i].ID +')">Eliminar</button>'+
                 '</td>' +
                 '</tr>';
             $('.socios').html(Valores);
@@ -70,12 +70,12 @@ function AgregarSocio(){
 
 function CargarSocio(idsocio){
     var datossocio = {
-        ID: idsocio
+        id: idsocio
     }
     var datossociojson = JSON.stringify(datossocio);
 
     $.ajax({
-        url: UrlGetUnSocio,
+        url: UrlPostUnSocio,
         type: 'POST',
         data: datossociojson,
         datatype: 'JSON',
@@ -101,7 +101,7 @@ function CargarSocio(idsocio){
 function ActualizarSocio(idsocio){
     var datossocio ={
         id: idsocio,
-        NOMBRE: $('#nombre').val(),
+        nombre: $('#nombre').val(),
         RAZON_SOCIAL: $('#razonsocial').val(),
         DIRECCION: $('#direccion').val(),
         TIPO_SOCIO: $('#tiposocio').val(),
